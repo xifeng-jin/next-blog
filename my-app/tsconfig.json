@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2017", // 定编译生成的 JavaScript 版本
+    "lib": ["dom", "dom.iterable", "esnext"], // 指定 TypeScript 包含的类型定义库
+    "allowJs": true, // 允许在 TypeScript 项目中导入 .js 文件
+    "skipLibCheck": true, // 不检查 node_modules中第三方库的类型定义
+    "strict": true, // 严格模式开启，例如禁止 any
+    "noEmit": true, // TypeScript 只检查类型错误，不生成 .js文件
+    "esModuleInterop": true, // 改善 CommonJS/ES Module 互操作性 import express from 'express';
+    "module": "esnext", // 使用最新的 ES 模块语法
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true, // 允许直接导入 JSON 文件
+    "isolatedModules": true, // 确保每个文件都是独立模块
+    "jsx": "react-jsx", // 使用新的 JSX 转换方式
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
