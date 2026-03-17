@@ -1,6 +1,6 @@
+import MyButton from "../component/button";
 import Image from "next/image";
-// import MyButton from "../component/button";
-import MyButton from "@/component/button";
+import MyButton2 from "@/component/button";
 
 export default function Home() {
   return (
