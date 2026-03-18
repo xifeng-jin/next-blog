@@ -1,69 +1,114 @@
-import MyButton from "../component/button";
-import Image from "next/image";
-import MyButton2 from "@/component/button";
+"use client";
 
-export default function Home() {
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+import styles from "./root.module.css";
+
+function HomeContentComponent() {
+  const router = useRouter();
+  const [time, setTime] = useState(new Date());
+  const [gradient, setGradient] = useState("");
+
+  // 更新时间并计算渐变
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // 根据时间计算渐变背景色
+  useEffect(() => {
+    const hours = time.getHours();
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+    
+    // 将时间转换为0-1的值
+    const timeRatio = (hours * 3600 + minutes * 60 + seconds) / 86400;
+    
+    // 根据时间生成不同的渐变
+    let newGradient;
+    
+    if (hours >= 6 && hours < 12) {
+      // 早晨：橙色到黄色渐变
+      const ratio = (hours - 6 + minutes/60) / 6;
+      newGradient = `linear-gradient(135deg, 
+        rgba(255, ${Math.floor(150 + ratio * 100)}, ${Math.floor(100 + ratio * 50)}, 0.9),
+        rgba(255, ${Math.floor(200 + ratio * 55)}, 0, 0.9)
+      )`;
+    } else if (hours >= 12 && hours < 18) {
+      // 下午：蓝色到青色渐变
+      const ratio = (hours - 12 + minutes/60) / 6;
+      newGradient = `linear-gradient(135deg, 
+        rgba(0, ${Math.floor(150 + ratio * 100)}, 255, 0.9),
+        rgba(0, 255, ${Math.floor(200 + ratio * 55)}, 0.9)
+      )`;
+    } else if (hours >= 18 && hours < 22) {
+      // 傍晚：紫色到深蓝色渐变
+      const ratio = (hours - 18 + minutes/60) / 4;
+      newGradient = `linear-gradient(135deg, 
+        rgba(${Math.floor(150 + ratio * 100)}, 0, 255, 0.9),
+        rgba(0, 0, ${Math.floor(150 + ratio * 100)}, 0.9)
+      )`;
+    } else {
+      // 夜晚：深蓝色到黑色渐变
+      const ratio = hours < 6 ? (hours + 24 - 22) / 8 : (hours - 22) / 8;
+      newGradient = `linear-gradient(135deg, 
+        rgba(0, 0, ${Math.floor(100 - ratio * 100)}, 0.9),
+        rgba(0, 0, ${Math.floor(50 - ratio * 50)}, 0.9)
+      )`;
+    }
+    
+    setGradient(newGradient);
+  }, [time]);
+
+  // 处理点击跳转
+  const handleClick = () => {
+    router.push("/blog");
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <MyButton />
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />ssw
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div 
+      className={styles.container}
+      style={{ background: gradient }}
+    >
+      <div className={styles.content}>
+        {/* 时间显示（可选） */}
+        <div className={styles.timeDisplay}>
+          {time.toLocaleTimeString("zh-CN")}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        
+        {/* 中央圆圈 */}
+        <div 
+          className={styles.circle}
+          onClick={handleClick}
+        >
+          <div className={styles.text}>
+            欢迎来到峡谷！
+          </div>
+          <div className={styles.hint}>
+            点击进入
+          </div>
         </div>
-      </main>
-      
+        
+        {/* 底部说明 */}
+        <div className={styles.footer}>
+          <p>背景颜色会随着时间动态变化</p>
+          <p>当前时间: {time.toLocaleString("zh-CN")}</p>
+        </div>
+      </div>
     </div>
   );
+}
+
+// 动态导入避免 SSR
+const HomeContent = dynamic(() => Promise.resolve(HomeContentComponent), {
+  ssr: false,
+  loading: () => <div className={styles.loading}>加载中...</div>
+});
+
+export default function Home() {
+  return <HomeContent />;
 }
