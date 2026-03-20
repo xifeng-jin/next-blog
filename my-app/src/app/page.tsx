@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+
 import useRandomTime from "./_hooks/useRandomTime";
 
 import styles from "./root.module.css";

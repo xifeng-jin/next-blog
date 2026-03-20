@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
+// import useRandomTime from "./_hooks/useRandomTime";
 import type { Metadata } from "next";
 
 const geistSans = Geist({

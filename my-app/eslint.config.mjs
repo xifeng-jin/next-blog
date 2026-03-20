@@ -2,7 +2,8 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import importPlugin from 'eslint-plugin-import';
-// import importOrderConfig from "./import-order.config.mjs";
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
+import importOrderConfig from "./import-order.config.mjs";
 
 const eslintConfig = defineConfig([ // ESLint 的配置定义辅助函数，提供类型提示
   ...nextVitals, // Next.js 的核心 Web 指标规则（性能相关
@@ -19,50 +20,27 @@ const eslintConfig = defineConfig([ // ESLint 的配置定义辅助函数，提�
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
       import: importPlugin,
+      'unused-imports': unusedImportsPlugin,
     },
     rules: {
-      // "unused-imports/no-unused-imports": "error",
-      "import/order": [
-        "error",
+      // 1. 未使用的导入 - 红色错误
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "error",  // 改为 error
         {
-          groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
-          pathGroups: [
-            {
-              pattern: "react",
-              group: "builtin",
-              position: "before",
-            },
-            {
-              pattern: "next/**",
-              group: "external",
-              position: "after",
-            },
-            {
-              pattern: "@/components/**",
-              group: "internal",
-            },
-            {
-              pattern: "./*.css",
-              group: "sibling",
-              position: "after",
-            },
-          ],
-          // 排除不参与的
-          pathGroupsExcludedImportTypes: ["react"],
-          // 表示分组前面需要有空行
-          "newlines-between": "always",
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-        },
+          "vars": "all",
+          "varsIgnorePattern": "^_",
+          "args": "after-used",
+          "argsIgnorePattern": "^_"
+        }
       ],
+      
+      // 2. console 检查 - 红色错误
+      "no-console": "error",
+      
+      ...importOrderConfig.rules,
     },
-    settings: {
-      "import/resolver": {
-        typescript: {},
-      },
-    },
+    settings: importOrderConfig.settings,
   },
 ]);
 
