@@ -1,4 +1,4 @@
-
+import NavigationButton from "@/component/button/navigateButton";
 const product = (id: string): Promise<{name: string; price: number }[] | undefined> => new Promise(resolve => {
     setTimeout(() => {
         resolve({
@@ -29,6 +29,14 @@ export default async function SlugPage({
     return (
         <div>
             <h3>slug page</h3>
+            <div className="w-full space-y-2 rounded-xl bg-yellow-100 p-4 selection:bg-yellow-200 selection:text-yellow-600 dark:bg-yellow-900 opacity-100 transition-opacity">
+                <p className="text-left text-yellow-950 dark:text-yellow-100">
+                Christian's should be infinitely more offended by depravity than they currently are. Sin is not just a 'lifestyle choice', that's demonic anti-God propaganda.
+                </p>
+            </div>
+            <div>
+                <NavigationButton href="/blog" title="go back" />
+            </div>
             <div>
                 <h4>params</h4>
                 <p>{slug}</p>
