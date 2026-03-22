@@ -1,14 +1,18 @@
 "use client";
 
-import useRandomTime from "@/app/_hooks/useRandomTime";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+
+import useRandomTime from "@/app/_hooks/useRandomTime";
 
 function BlogPageComponent() {
     const { color } = useRandomTime();
     return (
         <>
             <h3>Blog Page</h3>
-            <div>{color}</div>
+            <div>
+                <Link href='/blog/111'>go slug</Link>
+            </div>
             
         </>
     )
