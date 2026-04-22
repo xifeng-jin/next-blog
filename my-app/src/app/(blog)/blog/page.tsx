@@ -1,5 +1,4 @@
 "use client";
-
 import dynamic from "next/dynamic";
 
 import NavigationButton from "@/component/button/navigateButton";
@@ -15,6 +14,7 @@ function BlogPageComponent() {
             <Test />
             <div className="flex flex-row gap-4 justify-start">
                 <NavigationButton title="go back" href={`./blog/${uuid}`} />
+                <NavigationButton title="go posts" href={`./posts`} />
                 <NavigationButton title="go back" href={`./blog/${uuid}`} disabled />
             </div>
             
