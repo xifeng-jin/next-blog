@@ -40,6 +40,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* 添加谷歌字体链接 */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <style>{`
+          html {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 
+                        'Segoe UI', Roboto, 'Helvetica Neue', Arial, 
+                        sans-serif;
+          }
+          body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+        `}</style>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

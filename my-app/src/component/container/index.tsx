@@ -7,13 +7,19 @@ type ContainerProps = {
     num?: number;
 }
 
-export function Container({
+export default function Container({
     children,
     className,
     num = 1,
 }: ContainerProps){
     const defaultClass = `grid-cols-${num}`
     return (
-        <div className={classNames('grid place-content-center gap-x-4 sm:gap-x-6', defaultClass, className)}>{children}</div>
+        <div className="grid grid-cols-12 gap-4">
+            <div className="hidden sm:block sm:col-span-2"></div>
+            <div className="col-span-12 sm:col-span-8">
+                {children}
+            </div>
+            <div className="hidden sm:block sm:col-span-2"></div>
+        </div>
     )
 }
