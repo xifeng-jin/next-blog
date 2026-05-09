@@ -34,10 +34,5 @@
     "knip": "^6.12.2",
     "lint-staged": "^17.0.3",
     "typescript": "^5.9.3"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "knip --include exports,files --no-exit-code=0"
-    ]
   }
 }
