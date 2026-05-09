@@ -11,7 +11,8 @@
     "knip:exports": "knip --include exports,files",
     "knip:dep": "knip --include dependencies",
     "knip:staged": "knip --include exports,files",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "classnames": "^2.5.1",

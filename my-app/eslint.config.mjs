@@ -37,6 +37,11 @@ const eslintConfig = defineConfig([ // ESLint 的配置定义辅助函数，提�
       
       // 2. console 检查 - 红色错误
       "no-console": "error",
+
+      // 如果是普通 JS
+      "no-unused-vars": "error", 
+      // 如果是 TypeScript
+      "@typescript-eslint/no-unused-vars": "error",
       
       ...importOrderConfig.rules,
     },

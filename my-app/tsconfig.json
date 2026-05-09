@@ -23,7 +23,9 @@
       "@/*": ["./src/*"],
       "@/component/*": ["./src/component/*"],
       "@/lib/*": ["./src/lib/*"]
-    }
+    },
+    "noUnusedLocals": true, // 检测未使用的局部变量
+    "noUnusedParameters": true, // 检测未使用的函数参数
   },
   "include": [
     "next-env.d.ts",

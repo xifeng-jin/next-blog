@@ -1,1 +1,2 @@
-npx knip --include exports,files
+npm run knip:staged
+npm run lint-staged

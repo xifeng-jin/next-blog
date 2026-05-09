@@ -5,7 +5,11 @@ const MyButton = () => {
     )
 }
 
-const a = 'jjj';
+export const a = 'jjj';
+
+export const b = 'ddd';
+
+const a2 = 'jjj';
 
 
 export default MyButton;

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 // import useRandomTime from "./_hooks/useRandomTime";
 import type { Metadata } from "next";
+import MyButton from "@/component/button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
