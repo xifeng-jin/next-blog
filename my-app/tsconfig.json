@@ -18,11 +18,11 @@
         "name": "next"
       }
     ],
-    "baseUrl": "src/",
+    // "baseUrl": "src/",
     "paths": {
-      "@/*": ["*"],
-      "@/component/*": ["component/*"],
-      "@/lib/*": ["lib/*"]
+      "@/*": ["./src/*"],
+      "@/component/*": ["./src/component/*"],
+      "@/lib/*": ["./src/lib/*"]
     }
   },
   "include": [

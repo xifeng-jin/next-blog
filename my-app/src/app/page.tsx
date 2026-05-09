@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 
 import useRandomTime from "./_hooks/useRandomTime";
+import MyButton from "@/component/button";
 
 import styles from "./root.module.css";
 
