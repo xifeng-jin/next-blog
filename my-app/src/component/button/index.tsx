@@ -9,8 +9,6 @@ export const a = 'jjj';
 
 export const b = 'ddd';
 
-export const c = 'ddd';
-
 const a2 = 'jjj';
 
 

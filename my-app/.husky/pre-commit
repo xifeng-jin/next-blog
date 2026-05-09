@@ -1,2 +1,7 @@
+#!/usr/bin/env sh
+. "(dirname -- "$0")/_/husky.sh"
+
+# go to child project
+cd my-app
 npm run knip:staged
 npm run lint-staged
