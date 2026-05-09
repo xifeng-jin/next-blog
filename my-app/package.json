@@ -9,9 +9,12 @@
     "lint": "eslint",
     "knip": "knip",
     "knip:exports": "knip --include exports,files",
-    "knip:dep": "knip --include dependencies"
+    "knip:dep": "knip --include dependencies",
+    "knip:staged": "knip --include exports,files",
+    "prepare": "husky"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
@@ -26,7 +29,14 @@
     "eslint-config-next": "16.1.6",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-unused-imports": "^4.4.1",
+    "husky": "^9.1.7",
     "knip": "^6.12.2",
+    "lint-staged": "^17.0.3",
     "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "knip --include exports,files --no-exit-code=0"
+    ]
   }
 }
