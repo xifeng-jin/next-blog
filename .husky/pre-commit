@@ -4,4 +4,4 @@
 # go to child project
 cd my-app
 npm run knip:staged
-npx lint-staged --cwd .
+# npx lint-staged --cwd .

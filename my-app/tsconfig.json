@@ -21,6 +21,7 @@
     // "baseUrl": "src/",
     "paths": {
       "@/*": ["./src/*"],
+      "@/app/*": ["./src/app/*"],
       "@/component/*": ["./src/component/*"],
       "@/lib/*": ["./src/lib/*"]
     },
@@ -29,11 +30,11 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
+    "**/*.ts", // 这里可以包括上全局的 src/types/*.ts
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
   ],
   "exclude": ["node_modules"]
 }

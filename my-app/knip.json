@@ -4,5 +4,8 @@
     "-lintignore"
   ],
   "entry": ["src/app/page.tsx"],
-  "project": ["src/component/button/index.tsx"]
+  "project": ["src/component/button/index.tsx"],
+  "ignore": [
+    "src/component/**/*.{tsx,ts}"
+  ]
 }

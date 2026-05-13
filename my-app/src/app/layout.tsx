@@ -1,9 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
-// import useRandomTime from "./_hooks/useRandomTime";
+// import "@/app/globals.css";
 import type { Metadata } from "next";
-import MyButton from "@/component/button";
+import { WebVitals } from "@/component/web-vitals";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,6 +62,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/*  将副作用独立成组件 */}
+        <WebVitals />
         {children}
       </body>
     </html>
