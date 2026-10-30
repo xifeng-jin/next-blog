@@ -1,13 +1,12 @@
 import React from "react";
+import Header from "@/component/header";
 
-
-export default function MarketLayout({
-    children
-}: Readonly<{ children: React.ReactNode}>) {
+export default function AboutLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 
     return (
-        <>
-            {children}
-        </>
+        <div className="text-black bg-gray-50">
+            <Header />
+            <div>{children}</div>
+        </div>
     )
 }

@@ -1,19 +1,15 @@
-import React from "react";
-import Link from "next/link";
+import ZlLink from "./ZlLink";
 
 const linkTab = [
-    { text: 'About', href: '#' },
+    { text: 'Blog', href: '/blog' },
+    { text: 'About', href: '/about' },
     { text: 'Projects', href: '#' },
     { text: 'TimeLine', href: '#' },
     { text: 'Videos', href: '#' },
     { text: 'CV', href: '#' },
 ]
 
-const Header = ({
-    children
-}: {
-    children: React.ReactNode
-}) => {
+const Header = () => {
     return (
         <div className="mx-auto flex max-w-lg items-center justify-between gap-4 px-6 pt-6 lg:pt-20">
             <a href="/">
@@ -22,7 +18,7 @@ const Header = ({
             <div className="flex flex-row items-center justify-end gap-4">
                 {
                     linkTab.map(obj => {
-                        return <Link href={obj.href} key={obj.text}>{obj.text}</Link>
+                        return <ZlLink href={obj.href} key={obj.text} text={obj.text}></ZlLink>
                     })
                 }
             </div>

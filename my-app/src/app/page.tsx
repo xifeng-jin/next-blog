@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 
-import useRandomTime from "./_hooks/useRandomTime";
+// import useRandomTime from "./_hooks/useRandomTime";
 
 import styles from "./root.module.css";
 
@@ -13,7 +13,8 @@ function HomeContentComponent() {
   const router = useRouter();
   const [time, setTime] = useState(new Date());
 
-  const { color } = useRandomTime();
+  const { color } = { color: '#123456' };
+  // const { color } = useRandomTime();
   // console.log(color, 'jjjkk')
 
   // 更新时间并计算渐变
@@ -72,5 +73,8 @@ const HomeContent = dynamic(() => Promise.resolve(HomeContentComponent), {
 });
 
 export default function Home() {
+  return (
+    <div>12345</div>
+  );
   return <HomeContent />;
 }

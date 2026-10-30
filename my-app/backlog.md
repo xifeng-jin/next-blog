@@ -17,3 +17,8 @@
 - [复习tsconfig ](./tsconfig.json)
 - [移除devTools](./next.config.ts)
 - [导入规则/noConsole/noUnused](./import-order.config.mjs)
+
+
+
+## other
+- classnames 后续可以替换成 clsx

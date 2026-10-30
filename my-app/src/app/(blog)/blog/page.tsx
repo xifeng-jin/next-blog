@@ -3,17 +3,20 @@ import dynamic from "next/dynamic";
 
 import NavigationButton from "@/component/button/navigateButton";
 
-export const Test = () => undefined;
+export const Test = () => '';
 
-export const uuid = new Array(5).fill(0).map(() => Math.floor(Math.random() * 10)).join('');
+
+// export const uuid = new Array(5).fill(0).map(() => Math.floor(Math.random() * 10)).join('');
+// export const uuid = new Array(5).fill(0).map(() => Math.floor(Math.random() * 10)).join('');
+const uuid = '1234554321'
 
 function BlogPageComponent() {
     return (
         <div className="px-4">
-            <h3>Blog Page</h3>
+            <h3>Blog Page1</h3>
             <Test />
             <div className="flex flex-row gap-4 justify-start">
-                <NavigationButton title="go back" href={`./blog/${uuid}`} />
+                <NavigationButton title="go slug" href={`./blog/${uuid}`} />
                 <NavigationButton title="go posts" href={`./posts`} />
                 <NavigationButton title="go back" href={`./blog/${uuid}`} disabled />
             </div>
