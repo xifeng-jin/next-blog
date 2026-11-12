@@ -12,7 +12,8 @@
     "knip:dep": "knip --include dependencies",
     "knip:staged": "knip --include exports,files",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "ast:test": "node ./scripts/codemods/test/run.js"
   },
   "dependencies": {
     "@babel/parser": "^8.1.0",
