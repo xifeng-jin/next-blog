@@ -2,6 +2,14 @@
 import fs from 'fs';
 import path from 'path';
 import { argv } from 'process';
+import jscodeshift from 'jscodeshift';
+
+// npm i jscodeshift -D
+const j = jscodeshift.withParser('tsx');
+// console.log(j)
+// const file = fs.readFileSync()
+// const root = j()
+
 
 console.log(process.argv)
 
